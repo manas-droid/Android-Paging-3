@@ -1,5 +1,6 @@
-package com.example.photos;
+package com.example.photos.PackageRetrofit;
 
+import com.example.photos.data.Photos;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;

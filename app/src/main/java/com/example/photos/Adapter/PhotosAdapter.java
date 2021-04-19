@@ -1,6 +1,5 @@
-package com.example.photos;
+package com.example.photos.Adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.paging.PagingDataAdapter;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import org.jetbrains.annotations.NotNull;
+import com.example.photos.data.Photos;
+import com.example.photos.R;
 
 
 public class PhotosAdapter extends PagingDataAdapter<Photos,PhotosAdapter.PhotoViewHolder> {

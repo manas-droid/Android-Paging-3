@@ -1,4 +1,4 @@
-package com.example.photos;
+package com.example.photos.ViewModel;
 
 import android.util.Log;
 
@@ -10,6 +10,8 @@ import androidx.paging.PagingConfig;
 import androidx.paging.PagingData;
 import androidx.paging.PagingLiveData;
 
+import com.example.photos.data.PhotoSource;
+import com.example.photos.data.Photos;
 
 
 public class PhotoViewModel extends ViewModel {

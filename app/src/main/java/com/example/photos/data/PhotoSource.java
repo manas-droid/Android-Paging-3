@@ -1,10 +1,10 @@
-package com.example.photos;
-
-import android.util.Log;
-
+package com.example.photos.data;
 import androidx.paging.ListenableFuturePagingSource;
 import androidx.paging.PagingState;
 
+import com.example.photos.PackageRetrofit.GetDataService;
+import com.example.photos.PackageRetrofit.RetrofitInstance;
+import com.example.photos.data.Photos;
 import com.google.common.base.Function;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -15,7 +15,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -44,11 +43,13 @@ public class PhotoSource extends ListenableFuturePagingSource<Long , Photos> {
         }, executor);
         ListenableFuture<LoadResult<Long ,Photos>> loadResultListenableFuture1 = Futures.catching(loadResultListenableFuture, HttpException.class, LoadResult.Error::new, executor);
         return Futures.catching(loadResultListenableFuture1, IOException.class, LoadResult.Error::new, executor);
+
     }
 
     @Nullable
     @Override
     public Long getRefreshKey(@NotNull PagingState<Long, Photos> pagingState) {
+
         return null;
     }
 }

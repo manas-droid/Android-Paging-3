@@ -1,4 +1,4 @@
-package com.example.photos;
+package com.example.photos.data;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;

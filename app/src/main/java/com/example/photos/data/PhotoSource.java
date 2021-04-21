@@ -1,5 +1,8 @@
 package com.example.photos.data;
+import android.util.Log;
+
 import androidx.paging.ListenableFuturePagingSource;
+import androidx.paging.ListenableFutureRemoteMediator;
 import androidx.paging.PagingState;
 
 import com.example.photos.PackageRetrofit.GetDataService;
@@ -38,6 +41,7 @@ public class PhotoSource extends ListenableFuturePagingSource<Long , Photos> {
             @NullableDecl
             @Override
             public LoadResult<Long, Photos> apply(@NullableDecl List<Photos> input) {
+                Log.d(TAG, "apply: "+input.toString());
                 return new LoadResult.Page<>(input, page==UNSPLASH_STARTING_PAGE_INDEX ? null:page-1, input.isEmpty()? null:page+1);
             }
         }, executor);

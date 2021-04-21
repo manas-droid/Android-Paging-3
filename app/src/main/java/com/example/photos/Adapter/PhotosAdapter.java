@@ -1,5 +1,6 @@
 package com.example.photos.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class PhotosAdapter extends PagingDataAdapter<Photos,PhotosAdapter.PhotoV
         View view = layoutInflater.inflate(R.layout.list_photos,parent,false);
         return new PhotoViewHolder(view);
     }
+
 
 
     @Override

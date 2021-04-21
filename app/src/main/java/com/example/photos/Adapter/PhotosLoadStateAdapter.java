@@ -20,6 +20,7 @@ public class PhotosLoadStateAdapter extends LoadStateAdapter<PhotosLoadStateAdap
     private View.OnClickListener retryCallback;
 
     private static final String TAG = "PhotosLoadStateAdapter";
+
     public PhotosLoadStateAdapter(View.OnClickListener retryCallback) {
         this.retryCallback = retryCallback;
     }
@@ -28,10 +29,10 @@ public class PhotosLoadStateAdapter extends LoadStateAdapter<PhotosLoadStateAdap
     public void onBindViewHolder(
             @NotNull LoadStateViewHolder loadStateViewHolder
             , @NotNull LoadState loadState) {
-        Log.d(TAG, "onBindViewHolder: "+loadState);
-        loadStateViewHolder.progressBar.setVisibility(loadState instanceof LoadState.Loading? View.VISIBLE:View.GONE);
+        Log.d(TAG, "onBindViewHolder: " + loadState);
+        loadStateViewHolder.progressBar.setVisibility(loadState instanceof LoadState.Loading ? View.VISIBLE : View.GONE);
 
-        loadStateViewHolder.retryButton.setVisibility((loadState instanceof LoadState.Error) ? View.VISIBLE : View.GONE);
+        loadStateViewHolder.retryButton.setVisibility((loadState instanceof LoadState.Error || loadState instanceof LoadState.NotLoading) ? View.VISIBLE : View.GONE);
 
         loadStateViewHolder.retryButton.setOnClickListener(retryCallback);
     }
@@ -40,13 +41,14 @@ public class PhotosLoadStateAdapter extends LoadStateAdapter<PhotosLoadStateAdap
     @Override
     public LoadStateViewHolder onCreateViewHolder(@NotNull ViewGroup viewGroup, @NotNull LoadState loadState) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        View view = layoutInflater.inflate(R.layout.load_state_item,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.load_state_item, viewGroup, false);
         return new LoadStateViewHolder(view);
     }
 
-    public static  class LoadStateViewHolder extends RecyclerView.ViewHolder{
+    public static class LoadStateViewHolder extends RecyclerView.ViewHolder {
         private ProgressBar progressBar;
         private Button retryButton;
+
         public LoadStateViewHolder(@NonNull View itemView) {
             super(itemView);
             progressBar = itemView.findViewById(R.id.progressBar);
@@ -55,6 +57,5 @@ public class PhotosLoadStateAdapter extends LoadStateAdapter<PhotosLoadStateAdap
 
 
     }
-
 
 }

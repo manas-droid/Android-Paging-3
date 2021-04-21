@@ -2,10 +2,17 @@ package com.example.photos.data;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "Photos")
 public class Photos {
-    Integer albumId ,id;
-   String title ,url ,thumbnailUrl;
+    @PrimaryKey
+    Integer id;
+
+    Integer albumId;
+    String title ,url ,thumbnailUrl;
+
 
     public Photos(Integer albumId, Integer id, String title, String url, String thumbnailUrl) {
         this.albumId = albumId;
@@ -57,6 +64,7 @@ public class Photos {
     }
 
 
+
     public static  final DiffUtil.ItemCallback<Photos> CALLBACK = new DiffUtil.ItemCallback<Photos>() {
         @Override
         public boolean areItemsTheSame(@NonNull Photos oldItem, @NonNull Photos newItem) {
@@ -68,5 +76,6 @@ public class Photos {
             return true;
         }
     };
+
 }
 
